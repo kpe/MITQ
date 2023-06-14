@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="./static/css/academicons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Exploring the MIT Mathematics and EECS Curriculum Using
+                            Large Language Models</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://">Sarah J. Zhang</a><sup>1*</sup>,
+                                <a target="_blank" href="https://">Sam Florin</a><sup>1*</sup>,
+                                <br />
+                                <a target="_blank" href="https://">Ariel Lee</a><sup>5</sup>,
+                                <a target="_blank" href="https://">Eamon Niknafs</a><sup>5</sup>,
+                                <a target="_blank" href="https://">Andrei Marginean</a><sup>1</sup>,
+                                <a target="_blank" href="https://">Annie Wang</a><sup>1</sup>,
+                                <a target="_blank" href="https://">Keith Tyser</a><sup>5</sup>,
+                                <a target="_blank" href="https://">Zad Chin</a><sup>2</sup>,
+                                <a target="_blank" href="https://">Yann Hicke</a><sup>4</sup>,
+                                <br />
+                                <a target="_blank" href="https://">Nikhil Singh</a><sup>1</sup>,
+                                <a target="_blank" href="https://">Madeleine Udell</a><sup>3</sup>,
+                                <a target="_blank" href="https://">Yoon Kim</a><sup>1</sup>,
+                                <a target="_blank" href="https://">Tonio Buonassisi</a><sup>1</sup>,
+                                <br />
+                                <a target="_blank" href="https://">Armando Solar-Lezama</a><sup>1</sup>,
+                                <a target="_blank" href="https://">Iddo Drori</a><sup>1,5,6</sup>,
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>MIT</span>                            
+                            <span class="author-block"><sup>2</sup>Harvard University</span>
+                            <span class="author-block"><sup>3</sup>Stanford University</span>
+                            <span class="author-block"><sup>4</sup>Cornell University</span>
+                            <span class="author-block"><sup>5</sup>Columbia University</span>
+                            <span class="author-block"><sup>6</sup>Boston University</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO PDF Link. -->
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/abs/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a target="_blank" href="assets/documents/mitq.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>PDF</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a target="_blank" href="https://github.com/idrori/MITQ"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a target="_blank" href="https://twitter.com/iddo/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-twitter"></i>
+                                        </span>
+                                        <span>Tweet</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a target="_blank" href="https://huggingface.co/idrori/MIT-LLM"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span>MIT-LLM</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 125%;">
+                            We curate a comprehensive dataset of 4,550 questions and solutions from problem sets,
+                            midterm exams, and final exams across all MIT Mathematics and Electrical Engineering and
+                            Computer Science (EECS) courses required for obtaining a degree. We evaluate the ability of
+                            large language models to fulfill the graduation require- ments for any MIT major in
+                            Mathematics and EECS. Our results demonstrate that GPT-3.5 successfully solves a third of
+                            the entire MIT curriculum, while GPT-4 with prompt engineering achieves a perfect solve rate
+                            on a test set excluding questions with images. We fine-tune an open-source large language
+                            model on this dataset. We employ GPT-4 to automatically grade model responses, providing a
+                            detailed performance breakdown by course, question, and answer type. By embedding questions
+                            in a low-dimensional space, we explore the relationships between ques- tions, topics, and
+                            classes and discover which questions and classes are required for solving other questions
+                            and classes through few-shot learning. Our analysis offers valuable insights into course
+                            prerequisites and curriculum design, highlighting language models' potential for learning
+                            and improving Mathematics and EECS education.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Introduction-->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Introduction</span></h2>
+                        <div class="content has-text-justified">
+                            <span style="font-size: 110%;">
+                                Large language models (LLMs) have demonstrated the ability to pass exams from individual
+                                college-level courses. However, a systematic evaluation of this ability across
+                                entire curricula thatstudents would be expected to go through to obtain their college
+                                degrees has not been explored before due to the lack of a central repository of
+                                questions from actual exams and assignments at the curriculum-level. In this paper, we
+                                introduce MIT-Courses, a curated dataset of 4,550 questions and their solutions spanning
+                                exams and assignments from all courses that are part of the curriculum for the
+                                Mathematics and Electrical Engineering and Computer Science (EECS) majors at MIT. The
+                                dataset is seven times larger than our previously released dataset and covers all
+                                the course requirements for an undergraduate degree.
+                                <br />
+                                <br />
+                                Using this dataset, we benchmark four state-of-the-art language models, GPT-4,
+                                GPT-3.5, StableVicuna, and LLaMA, which vary in their sizes, their
+                                capabilities, and whether their weights are publicly available or not. We evaluate
+                                different LLM prompting techniques (few-shot, chain of thought, self-critique) and document their effect on the model success rates. We propose a
+                                new prompting technique which we call expert prompting, where we ask the model to
+                                suggest named experts on a given question, then ask for the answer the named experts
+                                would have given and subsequently make a collective decision. Our experiments show that
+                                expert prompting further improves performance relative to prior prompt engineering
+                                techniques. For models whose weights are publicly available, we also experiment with how
+                                fine-tuning improves performance on our test set as well as other reasoning tasks.
+                                <br />
+                                <br />
+                                In addition to providing performance measures across various models, we demonstrate the
+                                application of our models for curriculum design for college majors. An essential aspect
+                                of curriculum design is determining the appropriate sequence of courses to ensure
+                                prerequisites are established effectively. Traditionally, this process is manual,
+                                relying on human input to identify key concepts and learning outcomes. However, this
+                                method is subjective, and coordinating input from various faculty members teaching
+                                different courses can be challenging. Instead, we use the embeddings for the questions
+                                of different courses to discover dependencies between courses. Given the challenges of
+                                accurate student evaluation in a world where large language models are readily
+                                available, we also propose the development of new meta-questions that focus on assessing
+                                the correctness and completeness of students' understanding rather than their ability to
+                                generate correct answers.
+                            </span>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Dataset-->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Dataset</span></h2>
+
+
+                        <div class="content has-text-justified">
+                            <span style="font-size: 110%;">
+                                We collect and curate a comprehensive dataset of 4,550 questions and corresponding
+                                solutions from 30 MIT Mathematics and EECS courses required to graduate from the
+                                institute. This includes a broad range of core and elective courses, providing students
+                                with the foundational and specialized knowledge necessary to succeed in the field.
+                                <br />
+                                <br />
+                                To construct this dataset, we use course materials from the past two years. We download
+                                the PDF documents associated with each course, such as the syllabus, problem sets,
+                                midterm exams, and final exams, and manually curate the data. The breakdown of the level
+                                and number of questions and parts for each course is shown in the table below.
+                            </span>
+                            <br />
+                            <br />
+                            <img src="assets/table1.png" class="interpolation-image" alt=""
+                                style="display: block; margin-left: auto; margin-right: auto; max-width: 50vw" />
+                        </div>
+                        <br />
+                        <br />
+
+                        <h3 class="title is-4">Heuristics</h3>
+                        <div class="content has-text-justified">
+                            <span style="font-size: 110%;">
+                                We propose several heuristics for optimizing the prompt W that maximizes the expected grade over the
+                                dataset D. Let W be the context of words, Q be the question, A be the LLM answer, and S
+                                be the ground truth solution, D a dataset of {Q, S} pairs, 𝔼 the expectation over the questions and solutions in the dataset, 
+                                f the LLM, and g an automatic grading process. Our goal is to optimize:
+                                <br />
+                                <br />
+                                <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <munder>
+                                            <mo>max</mo>
+                                            <mi>W</mi>
+                                        </munder>
+                                        <msub>
+                                            <mi>𝔼</mi>
+                                            <mrow>
+                                                <mrow>
+                                                    <mo stretchy="true" form="prefix">(</mo>
+                                                    <mi>Q</mi>
+                                                    <mo>,</mo>
+                                                    <mi>S</mi>
+                                                    <mo stretchy="true" form="postfix">)</mo>
+                                                </mrow>
+                                                <mo>∈</mo>
+                                                <mi>D</mi>
+                                            </mrow>
+                                        </msub>
+                                        <mi>g</mi>
+                                        <mrow>
+                                            <mo stretchy="true" form="prefix">(</mo>
+                                            <mi>f</mi>
+                                            <mrow>
+                                                <mo stretchy="true" form="prefix">(</mo>
+                                                <mi>W</mi>
+                                                <mo>,</mo>
+                                                <mi>Q</mi>
+                                                <mo stretchy="true" form="postfix">)</mo>
+                                            </mrow>
+                                            <mo>,</mo>
+                                            <mi>S</mi>
+                                            <mo stretchy="true" form="postfix">)</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                    </mrow>
+                                </math>
+                                <br />
+                                
+                                <br />
+                                In this work, we use several prompt engineering heuristics to find a good W.
+                                <br /><br /><span style="font-weight: bold;">Zero-shot learning:</span> Without any data
+                                or example
+                                questions in the context, the LLM attempts to answer the question directly.
+                                <br /><br /><span style="font-weight: bold;">Few-shot learning</span> The LLM is
+                                provided with a few
+                                example questions and answers in the context to guide its understanding of the task.
+                                This can be represented as:
+                                <br />
+                                <br />
+                                <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mi>W</mi>
+                                        <mo>=</mo>
+                                        <mo stretchy="false" form="prefix">{</mo>
+                                        <mrow>
+                                            <mo stretchy="true" form="prefix">(</mo>
+                                            <msub>
+                                                <mi>Q</mi>
+                                                <mn>1</mn>
+                                            </msub>
+                                            <mo>,</mo>
+                                            <msub>
+                                                <mi>A</mi>
+                                                <mn>1</mn>
+                                            </msub>
+                                            <mo stretchy="true" form="postfix">)</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                        <mi>…</mi>
+                                        <mo>,</mo>
+                                        <mrow>
+                                            <mo stretchy="true" form="prefix">(</mo>
+                                            <msub>
+                                                <mi>Q</mi>
+                                                <mi>n</mi>
+                                            </msub>
+                                            <mo>,</mo>
+                                            <msub>
+                                                <mi>A</mi>
+                                                <mi>n</mi>
+                                            </msub>
+                                            <mo stretchy="true" form="postfix">)</mo>
+                                        </mrow>
+                                        <mo stretchy="false" form="postfix">}</mo>
+                                        <mo>,</mo>
+                                    </mrow>
+                                </math>
+                                <br />
+                                where n is the number of example question-answer pairs.
+                                <br /><br /><span style="font-weight: bold;">Chain-of-Thought:</span> Uses prompt
+                                engineering to
+                                elicit a step by step answer.
+                                <br /><br /><span style="font-weight: bold;">Tree-of-Thought:</span> Uses prompt
+                                engineering to
+                                generate a tree of answers and then searches this tree using BFS or DFS, combining
+                                a LLM with classical search algorithms.
+                                <br /><br /><span style="font-weight: bold;">Program Synthesis:</span> The LLM is prompted to
+                                write a program
+                                that solves the problem and then the program is run in an interpreter.
+                                <br /><br /><span style="font-weight: bold;">Critique:</span> An LLM generates a
+                                critique C
+                                for an answer A, and the answer is iteratively refined using the critiques. This process can be represented as follows:
+                                <br />
+                                <br />
+                                <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtable>
+                                        <mtr>
+                                            <mtd columnalign="right" style="text-align: right">
+                                                <mi>Q</mi>
+                                                <mo>,</mo>
+                                                <mi>A</mi>
+                                            </mtd>
+                                            <mtd columnalign="left" style="text-align: left">
+                                                <mo>→</mo>
+                                                <mi>C</mi>
+                                                <mo>,</mo>
+                                            </mtd>
+                                        </mtr>
+                                        <mtr>
+                                            <mtd columnalign="right" style="text-align: right">
+                                                <mi>Q</mi>
+                                                <mo>,</mo>
+                                                <mi>A</mi>
+                                                <mo>,</mo>
+                                                <mi>C</mi>
+                                            </mtd>
+                                            <mtd columnalign="left" style="text-align: left">
+                                                <mo>→</mo>
+                                                <mi>A</mi>
+                                                <mi>′</mi>
+                                                <mo>,</mo>
+                                            </mtd>
+                                        </mtr>
+                                        <mtr>
+                                            <mtd columnalign="right" style="text-align: right">
+                                                <mi>Q</mi>
+                                                <mo>,</mo>
+                                                <mi>A</mi>
+                                                <mo>,</mo>
+                                                <mi>C</mi>
+                                                <mo>,</mo>
+                                                <mi>A</mi>
+                                                <mi>′</mi>
+                                            </mtd>
+                                            <mtd columnalign="left" style="text-align: left">
+                                                <mo>→</mo>
+                                                <mi>C</mi>
+                                                <mi>′</mi>
+                                                <mo>,</mo>
+                                            </mtd>
+                                        </mtr>
+                                        <mtr>
+                                            <mtd columnalign="right" style="text-align: right" />
+                                            <mtd columnalign="left" style="text-align: left">
+                                                <mi>⋯</mi>
+                                            </mtd>
+                                        </mtr>
+                                    </mtable>
+                                </math>
+                                <br />
+                                <br /><br /><span style="font-weight: bold;">Expert Prompting:</span> A novel contribution of
+                                this work is to use the LLM to identify experts E in the field, to generate answers as if they
+                                were written by the experts, and finally to combine the experts answers by collaborative
+                                decision making. This process is represented by using a generic expert defined as the
+                                system role such as:
+                                <br />
+                                <i>E = You are an MIT Professor of Computer Science and Mathematics teaching Calculus
+                                    I.</i>
+                                <br />
+                                for questions from, e.g., Calculus I, or specific named experts generated by the LLM
+                                using the prompt:
+                                <br />
+                                <i>P_3 = Give an educated guess of who are three experts most capable of solving
+                                    this</i>
+                                question.
+                                <br />
+                                The LLM then generates the names E of multiple experts:
+                                <br />
+                                <br />
+                                <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtable>
+                                        <mtr>
+                                            <mtd columnalign="right" style="text-align: right">
+                                                <msub>
+                                                    <mi>P</mi>
+                                                    <mn>3</mn>
+                                                </msub>
+                                                <mo>,</mo>
+                                                <mi>Q</mi>
+                                            </mtd>
+                                            <mtd columnalign="left" style="text-align: left">
+                                                <mo>→</mo>
+                                                <mi>E</mi>
+                                                <mi>.</mi>
+                                            </mtd>
+                                        </mtr>
+                                    </mtable>
+                                </math>
+                                <br />
+                                Next, the LLM uses the named experts as the system role to generate an answer:
+                                <br />
+                                <br />
+                                <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtable>
+                                        <mtr>
+                                            <mtd columnalign="right" style="text-align: right">
+                                                <msup>
+                                                    <mi>Q</mi>
+                                                    <mi>E</mi>
+                                                </msup>
+                                            </mtd>
+                                            <mtd columnalign="left" style="text-align: left">
+                                                <mo>→</mo>
+                                                <msup>
+                                                    <mi>A</mi>
+                                                    <mi>E</mi>
+                                                </msup>
+                                                <mi>.</mi>
+                                            </mtd>
+                                        </mtr>
+                                    </mtable>
+                                </math>
+                                <br />
+                                where Q^E is the question being asked with the system role being E, for example:
+                                <br />
+                                <i>System: You are E.</i>
+                                <br />
+                                <i>User: Solve Q</i>
+                            </span>
+                        </div>
+                        
+                        <h3 class="title is-4">Fine-Tunning</h3>
+                        <div class="content has-text-justified">
+                            <span style="font-size: 110%;">
+                                We fine-tune an open-source model using our dataset and then make the fine-tuned model available to the public. We divide the dataset into separate training and test sets to ensure a fair evaluation. We benchmark the open-source LLM by comparing its performance on the test set before and after fine-tuning on the training set. We then benchmark the performance of open-source and closed models on our data. This allows us to maintain the integrity of the dataset while still providing valuable resources to the research community.
+                        </span>
+                        </div>
+                        <br />
+                        <br />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Curriculum-->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Curriculum</span></h2>
+
+                        <div class="content has-text-justified">
+                            <span style="font-size: 110%;">
+                                We embed all course questions into 1536-dimensional vectors using OpenAI's
+                                text-embedding-ada- 002. The embedded text consists of the topic of the question
+                                concatenated with the question itself. This embedding performs well on sentence
+                                similarity, can process long course questions, and is computationally efficient,
+                                embedding all course questions in five minutes. By analyzing the similarity between
+                                question embeddings from the same and different courses, we can make curriculum
+                                decisions. For example, a dependency graph of prerequisite classes is inferred in which
+                                the graph nodes are classes. The directed edges between two nodes measure the ability to
+                                answer questions from one class by questions from another by few-shot learning.
+                            </span>
+                            <br />
+                            <br />
+                            <img src="assets/fig2.png" class="interpolation-image" alt=""
+                                style="display: block; margin-left: auto; margin-right: auto; max-width: 60vw" />
+                            <br />
+                            <br />
+                            <img src="assets/fig3.png" class="interpolation-image" alt=""
+                                style="display: block; margin-left: auto; margin-right: auto; max-width: 60vw" />
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Benchmark-->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Benchmarks</span></h2>
+
+                        <div class="content has-text-justified">
+                            <span style="font-size: 110%;">
+                                We apply few-shot, chain-of-thought, self-critique, and experts prompting as a cascade.
+                                Since grading is performed automatically, we apply each method to the questions which
+                                are not solved perfectly by the previous methods. From the dataset of MIT questions, a
+                                test set of 288 questions is randomly selected amongst questions without images and with
+                                solutions. First, zero-shot answers to these questions are generated by the LLM's. These
+                                answers are then graded on a scale from 0 to 5 by GPT-4. Then, for all questions without
+                                a perfect score, few-shot answers from GPT-4 using the top 3 most similar questions
+                                under the embedding are generated. These answers are again graded by GPT-4 from 0 to 5.
+                                Finally, a GPT-4 process utilizing both the few-shot as well as chain-of-thought methods
+                                is completed for the questions not receiving a 5 out of 5 in either of the previous
+                                answers. Once grading on these final answers is completed, 95% of the questions are
+                                solved correctly. A similar process is performed for the ReClor [27] validation set
+                                consisting of 500 questions.
+                            </span>
+                            <br />
+                            <br />
+                            <img src="assets/table6.png" class="interpolation-image" alt=""
+                                style="display: block; margin-left: auto; margin-right: auto; max-width: 70vw" />
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Conclusion-->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Conclusion</span></h2>
+                        <div class="content has-text-justified">
+                            <p style="font-size: 125%;">
+                                We compiled a comprehensive dataset containing all questions from the MIT Mathematics
+                                and EECS
+                                undergraduate curriculum, including problem sets, midterms, and final exams. We frame
+                                prompt
+                                engineering as an optimization problem and provide effective sample heuristics. Our
+                                evaluation
+                                demonstrates that GPT-4, combined with a system expert, few-shot learning,
+                                chain-of-thought, self-
+                                critique, and collaborative decision-making techniques, achieves a perfect solve rate on
+                                a randomly
+                                selected test set of these questions excluding image-based questions. We release a LLaMA
+                                model
+                                fine-tuned on the MIT curriculum, which improves performance on a benchmark for
+                                assessing
+                                logical reasoning abilities. By employing few-shot learning, or in-context learning, we
+                                determine
+                                which questions and courses should be prerequisites for other courses based on the data,
+                                thereby
+                                identifying the foundational content necessary for advanced topics. Instead of
+                                prohibiting using LLMs
+                                in the classroom, we advocate for their integration by designing meta-questions that
+                                incorporate
+                                LLM-generated answers, requiring students to evaluate the completion and correctness of
+                                these
+                                responses.
+                                <br />
+                                <br />
+                                Limitations of our work is that inference and automatic grading using GPT-4 is
+                                relatively slow, taking
+                                around a minute for each question, and has a limited context window.
+                                <br />
+                                <br />
+                                Using a dataset of problem sets, midterms, and final exam questions and answers, we
+                                identify course
+                                connections and propose an optimal sequence of prerequisites. This approach assists
+                                educators and
+                                academic administrators to evaluate, design, and enhance curricula. In the future, such
+                                tools may
+                                prove invaluable for introducing new course content, identifying gaps in a curriculum,
+                                pinpointing
+                                courses with weak connections to others, and reinforcing key concepts. This method could
+                                benefit
+                                residential and asynchronous learners, helping students make informed decisions about
+                                course
+                                selection and guiding professors in determining which content to teach.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-widescreen content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{zhangj2023mitq,
+  author = {Zhang, Sarah J. and Florin, Sam and Lee, Ariel N. and Niknafs, Eamon and Tyser, Keith and Marginean, Andrei and Wang, Annie and Chin, Zad and Hicke, Yann and Singh, Nikhil and Udell, Madeleine and Kim, Yoon and Buonassisi, Tonio and Solar-Lezama, Armando and Drori, Iddo}
+  title = {Exploring the MIT Mathematics and EECS Curriculum Using Large Language Model},
+  year = {2023}
+}
+
+</code></pre>
+        </div>
+    </section>
+
+</body>
+
+</html>
