@@ -62,7 +62,7 @@ def repeat_grading(input_path, output_path, num_experts = 3, num_fs = 3, most_re
                 question_output.append(expert)
                 crit = True
                 for prompt in prompts:
-                    prompt_response = prompt(expert)                    
+                    prompt_response = prompt(expert) # calls fresh ChatCompletion.create                  
                     prompt_grade = grade(course_name, question, solution, prompt_response)
                     question_output+=[prompt_response, prompt_grade]
                     if correct(prompt_grade):
@@ -70,7 +70,7 @@ def repeat_grading(input_path, output_path, num_experts = 3, num_fs = 3, most_re
                         break
                 if crit:
                     for critique in critiques:
-                        crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique)
+                        crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create                  
                         crit_grade = grade(course_name, question, solution, crit_response)
                         question_output+=[crit_response,crit_grade]
                         if correct(crit_grade):
