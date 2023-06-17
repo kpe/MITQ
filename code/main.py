@@ -63,7 +63,7 @@ def repeat_grading(input_path, output_path, num_experts = 3, num_fs = 3, most_re
                 crit = True
                 for prompt in prompts:
                     prompt_response = prompt(expert) # calls fresh ChatCompletion.create                  
-                    prompt_grade = grade(course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution
+                    prompt_grade = grade(course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution (P verify p*q=x vs. NP, factor x into primes p,q s.t. p*q=x)
                     question_output+=[prompt_response, prompt_grade]
                     if correct(prompt_grade):
                         crit = False
