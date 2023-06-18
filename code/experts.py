@@ -12,7 +12,7 @@ openai.api_key = os.getenv('OpenAI_API_Key')
 
 @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
 def get_experts(department, course_name, question, num_experts=3, max_tokens = 8192):
-    generic_expert = f"You are an MIT Professor of {department} teaching the {course_name} course"
+    generic_expert = f"an MIT Professor of {department} teaching the {course_name} course"
     messages = [{"role":"system", "content": generic_expert + "\n"},
                 {"role":"user", "content": f"Give an educated guess of who are {num_experts} experts most capable of solving the following question.\n Question: {question}.\n Return a comma-separated list of {num_experts} names."}
     ]
