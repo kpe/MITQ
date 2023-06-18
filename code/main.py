@@ -1,3 +1,6 @@
+# Authors: Sam Florin, Iddo Drori
+# Emails: sflorin@mit.edu, idrori@mit.edu
+
 import openai
 import pandas as pd
 import time
