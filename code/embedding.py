@@ -5,6 +5,7 @@ import os
 import pandas as pd
 
 openai.api_key = os.getenv('OpenAI_API_Key')
+os.environ['Embedding_Engine'] = 'text-embedding-ada-002' # for few-shot
 
 def load_questions(file):
     questions = []
@@ -51,3 +52,8 @@ def get_most_similar(embeddings, target_embedding): # questions in embedding spa
     ordered = sorted(cos_sims, reverse=True)
     closest_qs = [cos_to_num[val]+1 for val in ordered]
     return closest_qs
+
+if __name__ == "__main__":
+    file = 'mit_dataset.csv' # entire dataset
+    if not os.path.exists(file + '_embeddings.json'):
+        make_embeddings(file)
