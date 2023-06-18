@@ -5,6 +5,7 @@ import backoff
 import tiktoken
 import csv 
 import math
+import logging
 from grade import num_tokens_from_messages, grade
 from experts import get_experts
 from zero_shot import zero_shot_response
@@ -12,6 +13,7 @@ from few_shot import few_shot_response
 from self_critique import self_critique_response
 import os
 
+logging.basicConfig(filename='log.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 openai.api_key = os.getenv('OpenAI_API_Key')
 
 
@@ -43,8 +45,9 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
             print(first_row)
             writer.writerow(first_row)
 
+        logging.info("Starting to grade questions")
         for index, row in df.iterrows():
-
+            logging.info(f"Starting to grade question {index}")
             print('Completing question', index)
             question_output = row.values.tolist()
             department = row['Department']
@@ -59,12 +62,16 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
             ]
             critique = ["Review your previous answer and find problems with your answer.", "Based on the problems you found, improve your answer."] # never use that a question was wrong
             for expert in experts:
+                logging.info(f"Starting to grade question {index} with expert {expert}")
                 print("Using expert", expert)
                 question_output.append(expert)
                 crit = False
                 for prompt in [prompts[2]]:
-                    prompt_response = prompt(expert) # calls fresh ChatCompletion.create, never use solution                 
+                    logging.info(f"Starting to grade question {index} with expert {expert} using prompt\n {prompt}")
+                    prompt_response = prompt(expert) # calls fresh ChatCompletion.create, never use solution 
+                    logging.info(f"Prompt response: {prompt_response}")
                     prompt_grade = grade(department, course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution
+                    logging.info(f"Prompt grade: {prompt_grade}")
                     question_output+=[prompt_response, prompt_grade]
                 if (crit):
                     crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create, never use solution                  
