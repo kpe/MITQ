@@ -65,7 +65,7 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
                        lambda expert: few_shot_response(expert, question, fs_qs, True)
             ]
             critique = ["Review your previous answer and find problems with your answer.", "Based on the problems you found, improve your answer."] # never use that a question was wrong
-            for expert in experts: # generic, named
+            for expert in experts: # generic, named 1, 2, 3
                 logging.info(f"Starting to grade question {index} with expert {expert}")
                 print("Using expert", expert)
                 question_output.append(expert)
