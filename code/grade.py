@@ -41,10 +41,10 @@ def grade(department, course_name, question, solution, answer, max_tokens=8192):
         return completion["choices"][0]["message"]["content"]
     except openai.error.APIError as e:
         print('error received')
-        time.sleep(30)
+        time.sleep(45)
         return grade(department, course_name, question, solution, answer)
     except openai.error.APIConnectionError as e:
         print('connection error received')
-        time.sleep(30)
+        time.sleep(45)
         return grade(department, course_name, question, solution, answer)
 
