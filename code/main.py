@@ -25,7 +25,7 @@ def correct(grade):
         return False
 
 
-def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q = 0):
+def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q = 0): 
     df = pd.read_csv(input_path)
     df = df.iloc[most_recent_q:]
     print(len(df.index))
@@ -57,7 +57,7 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
                        lambda expert: few_shot_response(expert, question, fs_qs), 
                        lambda expert: few_shot_response(expert, question, fs_qs, True)
             ]
-            critiques = [["Review your previous answer and find problems with your answer.", "Based on the problems you found, improve your answer."], ["Please provide feedback on the following incorrect answer.","Given this feedback, answer again."]]
+            critique = ["Review your previous answer and find problems with your answer.", "Based on the problems you found, improve your answer."]
             for expert in experts:
                 print("Using expert", expert)
                 question_output.append(expert)
@@ -67,10 +67,9 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
                     prompt_grade = grade(department, course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution
                     question_output+=[prompt_response, prompt_grade]
                 if (crit):
-                    for critique in [critiques[0]]:
-                        crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create                  
-                        crit_grade = grade(department, course_name, question, solution, crit_response) # GPT-4 auto-grading comparing answer to solution
-                        question_output+=[crit_response,crit_grade]
+                    crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create                  
+                    crit_grade = grade(department, course_name, question, solution, crit_response) # GPT-4 auto-grading comparing answer to solution
+                    question_output+=[crit_response,crit_grade]
 
             writer.writerow(question_output)
 
