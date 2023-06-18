@@ -25,7 +25,7 @@ def correct(grade):
         return False
 
 
-def repeat_grading(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q = 0):
+def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q = 0):
     df = pd.read_csv(input_path)
     df = df.iloc[most_recent_q:]
     print(len(df.index))
@@ -47,11 +47,12 @@ def repeat_grading(input_path, output_path, num_experts = 3, num_fs = 3, most_re
 
             print('Completing question', index)
             question_output = row.values.tolist()
+            department = row['Department']
             course_name = row['Course Name']
             question = row['Question']
             solution = row['Solution']
             fs_qs = [[row['Few shot question 1'], row['Few shot solution 1']], [row['Few shot question 2'], row['Few shot solution 2']], [row['Few shot question 3'], row['Few shot solution 3']]]
-            experts = get_experts(course_name, question, num_experts).split(', ')
+            experts = get_experts(department, course_name, question, num_experts).split(', ')
             prompts = [lambda expert: zero_shot_response(question, expert), 
                        lambda expert: few_shot_response(expert, question, fs_qs), 
                        lambda expert: few_shot_response(expert, question, fs_qs, True)
@@ -61,21 +62,15 @@ def repeat_grading(input_path, output_path, num_experts = 3, num_fs = 3, most_re
                 print("Using expert", expert)
                 question_output.append(expert)
                 crit = True
-                for prompt in prompts:
+                for prompt in [prompts[2]]:
                     prompt_response = prompt(expert) # calls fresh ChatCompletion.create                  
-                    prompt_grade = grade(course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution
+                    prompt_grade = grade(department, course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution
                     question_output+=[prompt_response, prompt_grade]
-                    if correct(prompt_grade):
-                        crit = False
-                        break
-                if crit:
-                    for critique in critiques:
-                        crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create                  
-                        crit_grade = grade(course_name, question, solution, crit_response) # GPT-4 auto-grading comparing answer to solution
-                        question_output+=[crit_response,crit_grade]
-                        if correct(crit_grade):
-                            break
+                for critique in critiques:
+                    crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create                  
+                    crit_grade = grade(department, course_name, question, solution, crit_response) # GPT-4 auto-grading comparing answer to solution
+                    question_output+=[crit_response,crit_grade]
 
             writer.writerow(question_output)
 
-repeat_grading('MIT_test_set.csv', 'MIT_test_set_graded.csv')
+run_all('MIT_test_set.csv', 'MIT_test_set_graded.csv')
