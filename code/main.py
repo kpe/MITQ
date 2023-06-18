@@ -17,7 +17,7 @@ from self_critique import self_critique_response
 import os
 
 logging.basicConfig(filename='log.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-os.environ['OpenAI_API_Key'] = 'sk-' # paste here
+os.environ['OpenAI_API_Key'] = 'sk-' # insert here
 os.environ['Prompt_Engine'] = 'gpt-4-0613' # or 'gpt-3.5-turbo-16k', both RPM 3,000, TPM 250,000
 os.environ['Grading_Engine'] = 'gpt-4-0613' # auto-grading compares with ground truth solution 
 os.environ['Experts_Engine'] = 'gpt-4-0613' # for function calling
