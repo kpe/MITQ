@@ -1,3 +1,6 @@
+# Author: Iddo Drori
+# Email: idrori@mit.edu
+
 import openai
 import pandas as pd
 import time
