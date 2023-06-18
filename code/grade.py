@@ -22,7 +22,7 @@ def num_tokens_from_messages(messages, model="gpt-4"):
     return num_tokens
 
 @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
-def grade(department, course_name, question, solution, answer, max_tokens=8192):
+def grade(department, course_name, question, solution, answer, max_tokens=8192): # 0-5
     try:
         messages = [
             {"role": "system", "content": f"You are an MIT Professor of {department} teaching the {course_name} course."
