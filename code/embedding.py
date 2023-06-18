@@ -43,7 +43,7 @@ def get_embeddings(file): # from file, with dimensions (n x d)
     return points
 
 
-def get_most_similar(embeddings, target_embedding): # questions in embedding space by cosine similarity.
+def get_most_similar(embeddings, target_embedding): # questions in embedding space by cosine similarity
     cos_sims = []
     cos_to_num = {}
     for j in range(len(embeddings)):
