@@ -49,4 +49,6 @@ def grade(department, course_name, question, solution, answer, max_tokens=8192):
         print('connection error received')
         time.sleep(45)
         return grade(department, course_name, question, solution, answer)
-
+    except openai.error.RateLimitError as e:
+        time.sleep(45)
+        return grade(department, course_name, question, solution, answer)
