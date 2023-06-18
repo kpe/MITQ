@@ -14,8 +14,9 @@ from self_critique import self_critique_response
 import os
 
 logging.basicConfig(filename='log.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+os.environ['OpenAI_API_Key'] = 'sk-'
+os.environ['Prompt_Engine'] = 'gpt-4'
 openai.api_key = os.getenv('OpenAI_API_Key')
-
 
 def correct(grade):
     try:
