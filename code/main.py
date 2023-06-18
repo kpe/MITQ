@@ -63,11 +63,11 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
                 question_output.append(expert)
                 crit = False
                 for prompt in [prompts[2]]:
-                    prompt_response = prompt(expert) # calls fresh ChatCompletion.create                  
+                    prompt_response = prompt(expert) # calls fresh ChatCompletion.create, never use solution                 
                     prompt_grade = grade(department, course_name, question, solution, prompt_response) # GPT-4 auto-grading comparing answer to solution
                     question_output+=[prompt_response, prompt_grade]
                 if (crit):
-                    crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create                  
+                    crit_response = self_critique_response(expert, course_name, question, question_output[-2], critique) # calls fresh ChatCompletion.create, never use solution                  
                     crit_grade = grade(department, course_name, question, solution, crit_response) # GPT-4 auto-grading comparing answer to solution
                     question_output+=[crit_response,crit_grade]
 
