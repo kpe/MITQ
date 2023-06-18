@@ -21,7 +21,7 @@ def self_critique_response(system, course_name, question, prev_answer, critiques
     content += f"{critiques[0]}"
     messages.append({"role":"user", "content":content})
     completion = openai.ChatCompletion.create(
-            model="gpt-4",
+            model=os.getenv('Prompt_Engine'),
             temperature=0,
             max_tokens=max_tokens - num_tokens_from_messages(messages),
             messages=messages)
@@ -31,7 +31,7 @@ def self_critique_response(system, course_name, question, prev_answer, critiques
     #messages.append({"role":"user", "content": "Based on the problems you found, improve your answer."})
     messages.append({"role":"user", "content": f"{critiques[1]}"})
     completion2 = openai.ChatCompletion.create(
-            model="gpt-4",
+            model=os.getenv('Prompt_Engine'),
             temperature=0,
             max_tokens=max_tokens - num_tokens_from_messages(messages),
             messages=messages)
