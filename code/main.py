@@ -70,7 +70,7 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
                 print("Using expert", expert)
                 question_output.append(expert)
                 crit = False
-                for prompt in [prompts[2]]:
+                for prompt in [prompts[2]]: # 0 for zero-shot, 1 for few-shot, 2 for few-shot with CoT, prompts for ablation
                     logging.info(f"Starting to grade question {index} with expert {expert} using prompt\n {prompt}")
                     prompt_response = prompt(expert) # calls fresh ChatCompletion.create, never use solution 
                     logging.info(f"Prompt response: {prompt_response}")
