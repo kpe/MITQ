@@ -73,4 +73,4 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
 
             writer.writerow(question_output)
 
-run_all('MIT_test_set.csv', 'MIT_test_set_graded.csv')
+run_all('MIT_test_set.csv', 'MIT_test_set_graded.csv') # apply same prompt for all questions zs+fs+cot+critique+expert, variables for ablations
