@@ -19,7 +19,7 @@ class Experts(BaseModel):
     expert_3: str
 
 @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
-def get_experts(department, course_name, question, num_experts=3, max_tokens = 8192):
+def get_experts(department, course_name, question, max_tokens = 8192):
     generic_expert = f"an MIT Professor of {department} teaching the {course_name} course"
     try:              
         response = openai.ChatCompletion.create(
