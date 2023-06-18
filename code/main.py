@@ -30,7 +30,7 @@ def correct(grade):
         return False
 
 
-def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q = 0): 
+def run_all(input_path, output_path, num_fs = 3, most_recent_q = 0): 
     df = pd.read_csv(input_path)
     df = df.iloc[most_recent_q:]
     print(len(df.index))
@@ -58,7 +58,7 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
             question = row['Question']
             solution = row['Solution']
             fs_qs = [[row['Few shot question 1'], row['Few shot solution 1']], [row['Few shot question 2'], row['Few shot solution 2']], [row['Few shot question 3'], row['Few shot solution 3']]]
-            experts = get_experts(department, course_name, question, num_experts).split(', ')
+            experts = get_experts(department, course_name, question).split(', ')
             prompts = [lambda expert: zero_shot_response(question, expert), 
                        lambda expert: few_shot_response(expert, question, fs_qs), 
                        lambda expert: few_shot_response(expert, question, fs_qs, True)
