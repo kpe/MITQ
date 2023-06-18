@@ -1,2 +1,4 @@
 *.py linguist-detectable=true
 *.js linguist-detectable=false
+*.json linguist-detectable=false
+*.jsx linguist-detectable=false
