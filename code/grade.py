@@ -36,7 +36,7 @@ def grade(department, course_name, question, solution, answer, max_tokens=8192):
                                         f"Assign a score for the answer on a scale of 0 to 5, where 0 is the lowest and 5 is the highest based on correctness. Do not provide any additional feedback or explanation."}
           ]
         completion = openai.ChatCompletion.create(
-            model="gpt-4",
+            model=os.getenv('Grading_Engine'),
             temperature=0,
             max_tokens=max_tokens - num_tokens_from_messages(messages),
             messages=messages)
