@@ -73,4 +73,4 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
 
             writer.writerow(question_output) # + human meta-grading of GPT-4 auto-grading
 
-run_all('MIT_test_set.csv', 'MIT_test_set_graded.csv') # apply same prompt for all questions zs+fs+cot+critique+expert, variables for ablations
+run_all('MIT_test_set.csv', 'MIT_test_set_graded.csv') # apply same methods for all questions zs+fs+cot+critique+expert, use variables for prompt ablations
