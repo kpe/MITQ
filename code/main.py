@@ -86,7 +86,7 @@ def run_all(input_path, output_path, num_fs = 3, most_recent_q = 0):
 
             writer.writerow(question_output) # + human meta-grading of GPT-4 auto-grading
 
-file_name = 'MIT_test_set.csv'
+file_name = 'mit_test.csv'
 current_directory = os.path.dirname(os.path.abspath(__file__))
 full_file_path = os.path.join(current_directory, file_name)
 run_all(full_file_path, 'MIT_test_set_graded.csv', most_recent_q = 0) # apply same methods for all questions zs+fs+cot+critique+expert, use variables for prompt ablations
