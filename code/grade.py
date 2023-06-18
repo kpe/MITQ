@@ -9,7 +9,9 @@ import os
 
 openai.api_key = os.getenv('OpenAI_API_Key')
 
-def num_tokens_from_messages(messages, model=os.getenv('Grading_Engine')):
+def num_tokens_from_messages(messages, model=None):
+    if model is None:
+        model = os.getenv('Grading_Engine')
     encoding = tiktoken.encoding_for_model(model)
     num_tokens = 0
     for message in messages:
