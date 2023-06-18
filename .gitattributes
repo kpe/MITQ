@@ -1,5 +1,6 @@
 *.py linguist-detectable=true
 *.js linguist-detectable=false
+*.css linguist-detectable=false
 *.json linguist-detectable=false
 *.jsx linguist-detectable=false
 *.html linguist-detectable=false
