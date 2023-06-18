@@ -36,12 +36,10 @@ def make_embeddings(file):
     with open(file + '_embeddings.json', 'w') as f:
         f.write(json.dumps(embeddings))
 
-
 def get_embeddings(file): # from file, with dimensions (n x d)
     with open(file, 'r') as f:
         points = json.load(f)['list_of_embeddings']
     return points
-
 
 def get_most_similar(embeddings, target_embedding): # questions in embedding space by cosine similarity
     cos_sims = []
