@@ -17,7 +17,7 @@ logging.basicConfig(filename='log.txt', level=logging.INFO, format='%(asctime)s 
 os.environ['OpenAI_API_Key'] = 'sk-'
 os.environ['Prompt_Engine'] = 'gpt-4'
 os.environ['Grading_Engine'] = 'gpt-4' # auto-grading compares with ground truth solution
-os.environ['Experts_Engine'] = 'gpt-4'
+os.environ['Experts_Engine'] = 'gpt-4-0613'
 openai.api_key = os.getenv('OpenAI_API_Key')
 
 def correct(grade):
