@@ -1,4 +1,5 @@
 [MITQ](https://idrori.github.io/MITQ/)
+<br />
 This repository for the paper "Exploring the MIT Mathematics and EECS Curriculum Using Large Language Models", contains the code for genrerating the results.
 
 ```
