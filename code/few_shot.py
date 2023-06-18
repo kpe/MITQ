@@ -32,15 +32,15 @@ def few_shot_response(system, question, fs_qs, cot=False, max_tokens=8192):
     #print(content)
     try:
         completion = openai.ChatCompletion.create(
-            model="gpt-4",
+            model=os.getenv('Prompt_Engine'),
             temperature=0,
             max_tokens=max_tokens - num_tokens_from_messages(messages),
             messages=messages)
         return completion["choices"][0]["message"]["content"]
         #return num_tokens_from_messages(messages)
     except openai.error.APIError as e:        
-        time.sleep(30)
+        time.sleep(45)
         return few_shot_response(system, question, fs_qs, cot)
     except openai.error.APIConnectionError as e:
-        time.sleep(30)
+        time.sleep(45)
         return few_shot_response(system, question, fs_qs, cot)
