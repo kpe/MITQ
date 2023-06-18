@@ -36,7 +36,7 @@ def run_all(input_path, output_path, num_experts = 3, num_fs = 3, most_recent_q 
         first_row = 'Question Index,Department,Course Number,Course Name,Prerequisites,Corequisites,Assignment,Topic,Question Number,Part Number,Percentage of Total Grade,Question Type,Question,Solution Type,Solution,Few shot question 1,Few shot solution 1,Few shot question 2,Few shot solution 2,Few shot question 3,Few shot solution 3'.split(',')
         for i in range(1,num_experts+1):
             first_row.append(f'Expert {i}')
-            for j in ['Zero shot', 'Few shot', 'Few shot chain of thought', 'Self-critique 1', 'Self-critique 2']:
+            for j in ['Zero shot', 'Few shot', 'Few shot chain of thought', 'Self-critique']:
                 first_row.append(f"{j} response")
                 first_row.append(f"{j} grade")
         if most_recent_q==0:
