@@ -17,7 +17,7 @@ def get_experts(department, course_name, question, num_experts=3, max_tokens = 8
     ]
     try:
         completion = openai.ChatCompletion.create(
-                model="gpt-4",
+                model=os.getenv('Experts_Engine'),
                 temperature=0,
                 max_tokens=max_tokens - num_tokens_from_messages(messages),
                 messages=messages)
