@@ -22,10 +22,10 @@ def num_tokens_from_messages(messages, model="gpt-4"):
     return num_tokens
 
 @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
-def grade(course_name, question, solution, answer, max_tokens=8192):
+def grade(department, course_name, question, solution, answer, max_tokens=8192):
     try:
         messages = [
-            {"role": "system", "content": f"You are an MIT Professor of Computer Science and Mathematics teaching the {course_name} course."
+            {"role": "system", "content": f"You are an MIT Professor of {department} teaching the {course_name} course."
                                           f"Your task is to grade the answer to a question based on a provided solution."},
             {"role": "user", "content": f"Question: {question}\n" +
                                         f"Solution: {solution}\n" +
@@ -42,8 +42,9 @@ def grade(course_name, question, solution, answer, max_tokens=8192):
     except openai.error.APIError as e:
         print('error received')
         time.sleep(30)
-        return grade(course_name, question, solution, answer)
+        return grade(department, course_name, question, solution, answer)
     except openai.error.APIConnectionError as e:
         print('connection error received')
         time.sleep(30)
-        return grade(course_name, question, solution, answer)
+        return grade(department, course_name, question, solution, answer)
+
