@@ -21,7 +21,7 @@ def zero_shot_response(system, question, max_tokens=8192):
           ]
 
         completion = openai.ChatCompletion.create(
-            model="gpt-4",
+            model=os.getenv('Prompt_Engine'),
             temperature=0,
             max_tokens=max_tokens - num_tokens_from_messages(messages),
             messages=messages)
