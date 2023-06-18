@@ -16,6 +16,7 @@ import os
 logging.basicConfig(filename='log.txt', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 os.environ['OpenAI_API_Key'] = 'sk-'
 os.environ['Prompt_Engine'] = 'gpt-4'
+os.environ['Embedding_Engine'] = 'text-embedding-ada-002'
 openai.api_key = os.getenv('OpenAI_API_Key')
 
 def correct(grade):
