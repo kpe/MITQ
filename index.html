@@ -133,22 +133,22 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p style="font-size: 125%;">
-                            We curate a comprehensive dataset of 4,550 questions and solutions from problem sets, midterm exams, and final exams 
-                            across all MIT Mathematics and Electrical Engineering and Computer Science (EECS) courses required for obtaining a degree. 
-                            We evaluate the ability of large language models to fulfill the graduation requirements for any MIT major in Mathematics and EECS. 
-                            GPT-3.5, upon release, successfully solved a third of the MIT curriculum based on human evaluation. 
-                            For scalable automatic evaluation across different models and methods we employ GPT-4 to grade responses given ground truth solutions, 
-                            with a detailed performance breakdown by course, question, and answer type. 
+                            We curate a comprehensive dataset of 4,550 questions and solutions from problem sets, 
+                            midterm exams, and final exams across all MIT Mathematics and Electrical Engineering and Computer Science (EECS) courses 
+                            required for obtaining a degree. We evaluate the ability of large language models to fulfill the graduation requirements 
+                            for any MIT major in Mathematics and EECS. GPT-3.5, upon release as ChatGPT, successfully solved a third of the MIT curriculum based 
+                            on human evaluation. We employ GPT-4 to grade responses given ground truth solutions for scalable automatic evaluation 
+                            across different models and methods, with a detailed performance breakdown by course, question, and answer type. 
                             We find that the accuracy of automatic GPT-4 grading is above 90% for long-form answers and near 100% for multiple-choice questions, 
-                            based on human evaluation. Based on this GPT-4-based automatic grading metric on a random test set excluding questions based on images 
-                            we find that GPT-3.5-turbo-16k passes with a 56% grade and GPT-4-0613 receives an A grade of 90% using a generic expert. 
-                            Further improvement by prompt engineering result in GPT-4-0613 acing the MIT test set. 
-                            We fine-tune open-source large language models on this dataset to find that these models improve performance. 
-                            By embedding questions in a low-dimensional space, we qualitatively explore the relationships between questions, topics, and classes 
-                            and discover which questions and classes are required for solving other questions and classes through few-shot learning. 
-                            Our analysis offers potentially valuable insights into course prerequisites and curriculum design, 
-                            highlighting language models' potential for learning and improving Mathematics and EECS education. 
-                            In the spirit of reproducible research, we make our code publicly available. 
+                            based on human evaluation. Based on this GPT-4-based automatic grading metric on a random test set excluding questions based on 
+                            images we find that GPT-3.5-turbo-16k passes with 56% and GPT-4-0613 receives an A grade of 90% using a generic expert. 
+                            Further improvement by prompt engineering, while ensuring no information leakage of the solution or whether a question is correct, 
+                            results in GPT-4-0613 acing the MIT test set. We fine-tune open-source large language models on this dataset to find that 
+                            these models improve performance. By embedding questions in a low-dimensional space, we qualitatively explore the 
+                            relationships between questions, topics, and classes and discover which questions and classes are required for solving 
+                            other questions and classes through few-shot learning. Our analysis offers valuable insights into course prerequisites 
+                            and curriculum design, highlighting language models' potential for learning and improving Mathematics and EECS education. 
+                            In the spirit of reproducible research, we make our code publicly available.
                         </p>
                     </div>
                 </div>
