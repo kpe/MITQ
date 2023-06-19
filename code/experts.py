@@ -29,7 +29,7 @@ def get_experts(department, course_name, question, max_tokens = 8192):
                 model="gpt-4-0613",
                 temperature=0,
                 messages=[
-                {"role":"user", "content": f"You are " + generic_expert + ". Give an educated guess of who are three experts most capable of solving the following question.\n Question: {question}.\n Return a comma-separated list of three names."}],
+                {"role":"user", "content": f"You are " + generic_expert + f". Give an educated guess of who are three experts most capable of solving the following question.\n Question: {question}.\n Return a comma-separated list of three names."}],
                 functions=[
                 {
                 "name": "get_named_experts_for_question",
