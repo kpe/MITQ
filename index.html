@@ -165,42 +165,36 @@
                         <h2 class="title is-3"><span class="dvima">Introduction</span></h2>
                         <div class="content has-text-justified">
                             <span style="font-size: 110%;">
-                                Large language models (LLMs) have demonstrated the ability to pass exams from individual
-                                college-level courses. However, a systematic evaluation of this ability across
-                                entire curricula thatstudents would be expected to go through to obtain their college
-                                degrees has not been explored before due to the lack of a central repository of
-                                questions from actual exams and assignments at the curriculum-level. In this paper, we
-                                introduce MIT-Courses, a curated dataset of 4,550 questions and their solutions spanning
-                                exams and assignments from all courses that are part of the curriculum for the
-                                Mathematics and Electrical Engineering and Computer Science (EECS) majors at MIT. The
-                                dataset is seven times larger than our previously released dataset and covers all
-                                the course requirements for an undergraduate degree.
-                                <br />
-                                <br />
-                                Using this dataset, we benchmark four state-of-the-art language models, GPT-4,
-                                GPT-3.5, StableVicuna, and LLaMA, which vary in their sizes, their
-                                capabilities, and whether their weights are publicly available or not. We evaluate
-                                different LLM prompting techniques (few-shot, chain of thought, self-critique) and document their effect on the model success rates. We propose a
-                                new prompting technique which we call expert prompting, where we ask the model to
-                                suggest named experts on a given question, then ask for the answer the named experts
-                                would have given and subsequently make a collective decision. Our experiments show that
-                                expert prompting further improves performance relative to prior prompt engineering
-                                techniques. For models whose weights are publicly available, we also experiment with how
-                                fine-tuning improves performance on our test set as well as other reasoning tasks.
-                                <br />
-                                <br />
-                                In addition to providing performance measures across various models, we demonstrate the
-                                application of our models for curriculum design for college majors. An essential aspect
-                                of curriculum design is determining the appropriate sequence of courses to ensure
-                                prerequisites are established effectively. Traditionally, this process is manual,
-                                relying on human input to identify key concepts and learning outcomes. However, this
-                                method is subjective, and coordinating input from various faculty members teaching
-                                different courses can be challenging. Instead, we use the embeddings for the questions
-                                of different courses to discover dependencies between courses. Given the challenges of
-                                accurate student evaluation in a world where large language models are readily
-                                available, we also propose the development of new meta-questions that focus on assessing
-                                the correctness and completeness of students' understanding rather than their ability to
-                                generate correct answers.
+                                Large language models (LLMs) have demonstrated the ability to pass exams from individual college-level courses.
+                                However, a systematic evaluation of this ability across entire curricula that students would be expected to go 
+                                through to obtain their college degrees has yet to be explored due to the lack of a central repository of 
+                                questions from actual exams and assignments at the curriculum level. In this paper, we introduce MIT-Courses,
+                                a curated dataset of 4,550 questions and their solutions spanning exams and assignments from all courses that 
+                                form the curriculum for MIT's Mathematics and Electrical Engineering and Computer Science (EECS) majors. 
+                                The dataset covers all course requirements for an undergraduate degree.
+                                <br >
+                                Using this dataset, we benchmark state-of-the-art language models, GPT-4, GPT-3.5, StableVicuna, and LLaMA, 
+                                which vary in their sizes, their capabilities, and whether their weights are publicly available or not. 
+                                Benchmarking models on such datasets requires scalable techniques for evaluation. 
+                                Recent work has found that GPT-4-based evaluation correlates well with human judgment across various tasks.
+                                We extend this approach to grading college-level courses, wherein GPT-4 is given (question, predicted answer, solution) tuples 
+                                and asked to give a score between 0-5. Human evaluation reveals that GPT-4-based automatic evaluation is a viable approach for 
+                                scalable benchmarking.
+                                <br >
+                                While the goal of this paper is focused on datasets and LLM benchmarking, we also demonstrate the application of LLMs for 
+                                curriculum design for college majors. An essential aspect of curriculum design is determining the appropriate sequence of 
+                                courses to ensure prerequisites are established effectively. Traditionally, this process is manual, relying on human input 
+                                to identify key concepts and learning outcomes. Instead, we use the embeddings for the questions of different courses 
+                                to discover dependencies between courses. Given the challenges of accurate student evaluation in a world where 
+                                large language models are readily available, we also propose the development of new meta-questions that focus on 
+                                assessing the correctness and completeness of students' understanding rather than their ability to generate correct answers.
+                                <br >
+                                To prevent our dataset from being incorporated as part of LLM training corpora, the dataset will not be made publicly available 
+                                but will be made available to researchers upon request through a data use agreement (DUA). This is both to preserve the value 
+                                of this dataset as a resource for benchmarking LLMs---which is lost if the dataset becomes part of the training set for 
+                                future public models---as well as to respect the wishes of instructors who contributed to it and may want to preserve 
+                                their ability to use problems from this dataset in the future. We release our code reproducing the GPT results 
+                                and open-source LLaMA models fine-tuned on our dataset.
                             </span>
                         </div>
                         <br />
@@ -544,19 +538,16 @@
 
                         <div class="content has-text-justified">
                             <span style="font-size: 110%;">
-                                We apply few-shot, chain-of-thought, self-critique, and expert prompting as a cascade. 
-                                Since grading is performed automatically, we apply each method to the questions that 
-                                the previous methods do not solve perfectly. From the dataset of MIT questions, 
-                                a test set of 288 questions is randomly selected amongst questions without images and with solutions. 
-                                First, zero-shot answers to these questions are generated by the LLMs. 
-                                These answers are then graded on a scale from 0 to 5 by GPT-4.
+                                We apply few-shot, chain-of-thought, self-critique, and expert prompting. 
+                                From the dataset of MIT questions, a test set of 288 questions is randomly selected amongst solvable questions without images 
+                                and with solutions. 
+                                We generate zero-shot answers to these questions using a generic expert as the system role.
+                                These answers are graded on a scale from 0 to 5 by GPT-4.
                                 OpenAI evals also measure correctness using automatic GPT-4 grading.
-                                We double-verify manually that the grading of the test set is correct.
-                                Then, for all questions without a perfect score, few-shot answers from GPT-4 using the top 3 most similar questions 
-                                under the embedding are generated. These answers are again graded by GPT-4 from 0 to 5. 
-                                Then, few-shot and chain-of-thought are applied to questions not receiving a 5 out of 5 in the previous answers. 
-                                Subsequently, self-critique is applied to the remaining questions. Finally, once grading on these answers is completed 
-                                across all experts, all questions are solved correctly.
+                                We manually verify that the grading of the test set is correct.
+                                We ablate few-shot learning, chain-of-thought prompting, and self-critique.
+                                Finally, once grading on these answers is completed 
+                                across all experts, the model aces the MIT test set.
                                 A similar process is performed for the ReClor validation set consisting of 500 questions.
                             </span>
                             <br />
