@@ -35,3 +35,6 @@ def zero_shot_response(system, question, max_tokens=8192):
     except openai.error.RateLimitError as e:
         time.sleep(45)
         return zero_shot_response(system, question)
+    except openai.error.Timeout as e:
+        time.sleep(45)
+        return zero_shot_response(system, question)
