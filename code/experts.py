@@ -52,3 +52,6 @@ def get_experts(department, course_name, question, max_tokens = 8192):
     except openai.error.RateLimitError as e:
         time.sleep(45)
         return get_experts(department, course_name, question)
+    except openai.error.Timeout as e:
+        time.sleep(45)
+        return get_experts(department, course_name, question)
