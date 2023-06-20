@@ -10,16 +10,16 @@ import os
 
 openai.api_key = os.getenv('OpenAI_API_Key')
 @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
-def zero_shot_response(system, question, max_tokens=8192):
+def zero_shot_response(system, question, cot=True, max_tokens=8192):
     try:
         messages = [
             {"role": "system", "content": f"You are {system}\n"
-                                          f"Your task is to answer the following question."},
-            {"role": "user", "content": f"Please answer the following question.\n" + 
-                                        f"Question: {question}\n" 
-            }                               
+                                          f"Your task is to answer the following question."}                       
           ]
-
+        content = f"Please answer the following question.\nQuestion: {question}\n"
+        if cot:
+            content += "Let's think step by step."
+        messages.append({"role":"user", "content":content})
         completion = openai.ChatCompletion.create(
             model=os.getenv('Prompt_Engine'),
             temperature=0,
