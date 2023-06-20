@@ -42,7 +42,7 @@ def run_all(input_path, output_path, num_fs = 3, most_recent_q = 0):
     with open(output_path, 'a', newline='') as file:
         writer = csv.writer(file)
         first_row = 'Question Index,Department,Course Number,Course Name,Prerequisites,Corequisites,Assignment,Topic,Question Number,Part Number,Percentage of Total Grade,Question Type,Question,Solution Type,Solution,Few shot question 1,Few shot solution 1,Few shot question 2,Few shot solution 2,Few shot question 3,Few shot solution 3'.split(',')
-        for i in range(1,4):
+        for i in range(1,5):
             first_row.append(f'Expert {i}')
             for j in ['Zero shot', 'Few shot']: # default CoT prompt, 'Self-critique'
                 first_row.append(f"{j} response")
