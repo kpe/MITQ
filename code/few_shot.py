@@ -47,3 +47,6 @@ def few_shot_response(system, question, fs_qs, cot=False, max_tokens=8192):
     except openai.error.RateLimitError as e:
         time.sleep(45)
         return few_shot_response(system, question, fs_qs, cot)
+    except openai.error.Timeout as e:
+        time.sleep(45)
+        return few_shot_response(system, question, fs_qs, cot)
