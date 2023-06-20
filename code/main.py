@@ -44,7 +44,7 @@ def run_all(input_path, output_path, num_fs = 3, most_recent_q = 0):
         first_row = 'Question Index,Department,Course Number,Course Name,Prerequisites,Corequisites,Assignment,Topic,Question Number,Part Number,Percentage of Total Grade,Question Type,Question,Solution Type,Solution,Few shot question 1,Few shot solution 1,Few shot question 2,Few shot solution 2,Few shot question 3,Few shot solution 3'.split(',')
         for i in range(1,4):
             first_row.append(f'Expert {i}')
-            for j in ['Zero shot', 'Few shot', 'Few shot chain of thought', 'Self-critique']:
+            for j in ['Zero shot', 'Few shot']: # default CoT prompt, 'Self-critique'
                 first_row.append(f"{j} response")
                 first_row.append(f"{j} grade")
         if most_recent_q==0:
@@ -72,7 +72,7 @@ def run_all(input_path, output_path, num_fs = 3, most_recent_q = 0):
                 print("Using expert", expert)
                 question_output.append(expert)
                 crit = False
-                for prompt in [prompts[2]]: # 0 for zero-shot, 1 for few-shot, 2 for few-shot with CoT, prompts for ablation
+                for prompt in prompts:
                     logging.info(f"Starting to grade question {index} with expert {expert} using prompt\n {prompt}")
                     prompt_response = prompt(expert) # calls fresh ChatCompletion.create, never use solution 
                     logging.info(f"Prompt response: {prompt_response}")
@@ -89,4 +89,4 @@ def run_all(input_path, output_path, num_fs = 3, most_recent_q = 0):
 file_name = 'mit_test.csv'
 current_directory = os.path.dirname(os.path.abspath(__file__))
 full_file_path = os.path.join(current_directory, file_name)
-run_all(full_file_path, 'mit_test_graded.csv', most_recent_q = 0) # apply same methods for all questions zs+fs+cot+critique+expert, use variables for prompt ablations
+run_all(full_file_path, 'mit_test_graded.csv', most_recent_q = 0) # apply same methods for all questions zs+fs+cot+critique+expert
